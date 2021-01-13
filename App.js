@@ -1,40 +1,78 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
 
 export default function App() {
   const [altura,setAltura] = useState('');
   const [peso,setPeso] = useState('');
+  const [imcText,setImcText] = useState('');
+  const [classText,setClassText] = useState('');
+  
   function imc(){
-    const alt = altura / 100;
-    const result = peso / (alt * alt);
+    //verifica se os campos estao preenchido
+    if (altura !='' && peso !=''){
+      //calculo imc
+      const alt = altura / 100;
+      const result = peso / (alt * alt);
 
-    alert(`imc = ${result.toFixed(2)}`)
+      setImcText(`Seu IMC é: ${result.toFixed(2)}`);
+      // limpa os inputs
+      setPeso('');
+      setAltura('');
+      // define a classe da obesidade
+      if(result < 18.5){
+        setClassText('Magreza');
+      }
+      else if(result >= 18.5 && result < 25){
+        setClassText('Normal');
+      }
+      else if(result >= 25 && result < 30){
+        setClassText('Sobrepeso');
+      }
+      else if(result >= 30 && result < 40){
+        setClassText('Obesidade');
+      }
+      else {
+        setClassText('Obesidade Grave');
+      }
+
+      alert('IMC calculado!!');
+
+    }
+    else{
+      alert('Preencha os dados corretamente');
+    }
   }
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Calculadora IMC</Text>
-      
-      <TextInput style={styles.input}
-      placeholder={'Altura (cm)'}
-      keyboardType='numeric'
-      onChangeText={ (altura) => setAltura(altura)}
-      value={altura}
-      />
-      
-      <TextInput style={styles.input}
-      placeholder={'Peso (kg)'}
-      keyboardType='numeric'
-      onChangeText={ (peso) => setPeso(peso)}
-      value={peso}
-      />
-      
-      <TouchableOpacity style={styles.button} onPress={()=>{imc()}}>
-        <Text style={styles.text}>Calcular</Text>
-      </TouchableOpacity>
 
-      <StatusBar style="auto" />
-    </View>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>Calculadora IMC</Text>
+        
+        <TextInput style={styles.input}
+        placeholder={'Altura (cm)'}
+        keyboardType='numeric'
+        onChangeText={ (altura) => setAltura(altura)}
+        value={altura}
+        />
+        
+        <TextInput style={styles.input}
+        placeholder={'Peso (kg)'}
+        keyboardType='numeric'
+        onChangeText={ (peso) => setPeso(peso)}
+        value={peso}
+        />
+      
+        <TouchableOpacity style={styles.button} onPress={()=>{imc()}}>
+          <Text style={styles.text}>Calcular</Text>
+        </TouchableOpacity>
+        <View style={styles.result}>
+          <Text style={styles.imc}>{imcText}</Text>
+          <Text style={styles.class}>{classText}</Text>
+        </View>
+
+        <StatusBar style="auto" />
+      </SafeAreaView>
+    
   );
 }
 
@@ -70,8 +108,20 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     elevation: 3,
   },
-  text:{
+  text: {
     fontSize: 20
-  }
+  },
+  result: {
+    alignItems: 'center',
+    padding: 15,
+  },
 
+  class: {
+    fontSize:35,
+
+  },
+  imc: {
+    fontSize: 25,
+    color: "#555"
+  }
 });
