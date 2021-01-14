@@ -1,7 +1,8 @@
-# IMC App
+# Calc IMC
 
 Aplicativo que calcula o indice de massa corporea.
 Desenvolvido usando React Native e expo.
+## Screenshots
 
 ## Executar
 Dentro do diretorio
