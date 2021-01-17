@@ -1,4 +1,4 @@
-# Calc IMC
+# Calc IMC ⚖️🏋️
 
 Aplicativo que calcula o indice de massa corporea.
 Desenvolvido usando React Native e expo.
