@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "imc-app",
-    "slug": "imc-app",
+    "name": "Calc IMC",
+    "slug": "imc-calc",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,10 +20,12 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
-        "backgroundColor": "#00aa55"
-      }
+    	"adaptiveIcon": {
+        	"foregroundImage": "./assets/iconAdp.png",
+        	"backgroundColor": "#00aa55"
+      	},
+      "package": "com.lucasmeneses.imcalc",
+      "versionCode": 1
     },
 
   }
