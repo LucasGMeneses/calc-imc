@@ -7,7 +7,11 @@ Desenvolvido usando React Native e expo.
 
 <img src="screenshot/img2.png" alt="img2" height="500"/>
 
-## Tecnologia :
+## Tecnologias
+
+* React Native
+* Expo
+
 ## Executar
 Dentro do diretorio
 ```
@@ -16,3 +20,5 @@ Dentro do diretorio
 ```
 **obs.:** baixar o app do expo.
 
+## Download
+* *[Android](https://github.com/LucasGMeneses/calc-imc/releases/download/1.0/imc-calc.apk)*
